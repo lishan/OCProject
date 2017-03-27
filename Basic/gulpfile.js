@@ -70,10 +70,10 @@ gulp.task('clean:tmp', function (cb) {
 });
 
 gulp.task('start:client', ['start:server', 'styles'], function () {
-  openURL('http://localhost:9000');
+  openURL('http://localhost:9000','firefox');
 });
 
-gulp.task('start:server', function() {
+gulp.task('start:server', ['bower'], function() {
   $.connect.server({
     root: [yeoman.app, '.tmp'],
     livereload: true,
@@ -143,7 +143,7 @@ gulp.task('bower', function () {
       directory: yeoman.app + '/bower_components',
       ignorePath: '..'
     }))
-  .pipe(gulp.dest(yeoman.app + '/views'));
+  .pipe(gulp.dest(yeoman.app));
 });
 
 ///////////
