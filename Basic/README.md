@@ -134,13 +134,15 @@ gulp.task('bower', function () {
       directory: yeoman.app + '/bower_components',
       ignorePath: '..'
     }))
-  .pipe(gulp.dest(yeoman.app)); //这里放到app目录下会覆盖原来的index.html
+-  .pipe(gulp.dest(yeoman.app + '/views'));
++  .pipe(gulp.dest(yeoman.app)); //这里放到app目录下会覆盖原来的index.html
 });
 ```
 
 + 由于每次运行wiredep需要执行`gulp bower`，怎样在`gulp serve`中每次自动运行下`gulp bower`把新添的bower依赖放到index.html中？可以通过添加gulp任务依赖的方式
 ```
-gulp.task('start:server', ['bower'], function() {// 这里的中括号bower，就是运行启动server时候的依赖
+-gulp.task('start:server', function() {
++gulp.task('start:server', ['bower'], function() {// 这里的中括号bower，就是运行启动server时候的依赖
   $.connect.server({
     root: [yeoman.app, '.tmp'],
     livereload: true,
