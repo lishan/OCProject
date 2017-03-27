@@ -5,7 +5,7 @@
 [示例代码的Github地址](https://github.com/lishan/OCProject/tree/master/Basic)
 [简书地址](http://www.jianshu.com/p/cb5b76c3aa36)
 
-##使用yeoman generators
+## 使用yeoman generators
 
 + angular generator是一个angular骨架代码生成工具
 
@@ -19,7 +19,7 @@ s.js, angular-resource.js, angular-messages.js, angular-route.js, angular-saniti
 -touch.js
 ```
 
-##安装karma的依赖
+## 安装karma的依赖
 
 ```
 npm install generator-karma --save-dev
@@ -29,14 +29,14 @@ npm install generator-karma --save-dev
 "generator-karma": "^2.0.0",
 ```
 
-##安装项目需要的依赖的node_modules和bower_components
+## 安装项目需要的依赖的node_modules和bower_components
 
 ```
 npm install
 bower install
 ```
 
-##运行gulp任务
+## 运行gulp任务
 
 + 由于gulp本身被包含在项目的依赖中，可以在node_modules下面找到
 
@@ -72,7 +72,7 @@ gulp.task('start:client', ['start:server', 'styles'], function () {
  });
 ```
 
-##修改wiredep配置
+## 修改wiredep配置
 
 + 打开gulpfile.js配置文件可以看到，这里的bower任务是发现所有bower依赖（包括css和js），运行`gulp bower`将其注入到index.html中。
 
@@ -154,7 +154,7 @@ gulp.task('start:server', ['bower'], function() {// 这里的中括号bower，�
 
 ![屏幕快照 2017-03-27 下午2.37.58.png](http://upload-images.jianshu.io/upload_images/4623363-dbc0601a14bb70b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##小结
+## 小结
 
 +  yeoman的generator可以方便的帮助我们快速的建立一个骨架工程，例如generator-angular-fullstack，可以生成一个全栈的工程，包括express server，提供mongodb依赖
 + gulp是一个非常强大的项目管理工具，可以完成build, test, 注入，打包，等等功能
