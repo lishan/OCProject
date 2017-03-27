@@ -79,28 +79,28 @@ gulp.task('start:client', ['start:server', 'styles'], function () {
   +  css 注入示例，运行之后会在中间加入css依赖
 ```
 <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
+<!-- bower:css -->
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+<!-- endbower -->
+<!-- endbuild -->
 ```
   + js 注入
 ```
 <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 ```
 
 + 但是在默认的yeoman生成的代码中，bower任务如下，这地方有两个问题
@@ -126,7 +126,7 @@ gulp.task('bower', function () {
 }
 ```
 + 其次修改gulp.js，重新生成的index.html覆盖原来的
-```
+```diff
 // inject bower components
 gulp.task('bower', function () {
   return gulp.src(paths.views.main)
@@ -140,7 +140,7 @@ gulp.task('bower', function () {
 ```
 
 + 由于每次运行wiredep需要执行`gulp bower`，怎样在`gulp serve`中每次自动运行下`gulp bower`把新添的bower依赖放到index.html中？可以通过添加gulp任务依赖的方式
-```
+```diff
 -gulp.task('start:server', function() {
 +gulp.task('start:server', ['bower'], function() {// 这里的中括号bower，就是运行启动server时候的依赖
   $.connect.server({
