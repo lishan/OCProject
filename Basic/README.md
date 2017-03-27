@@ -151,7 +151,7 @@ gulp.task('bower', function () {
 });
 ```
 
-+ 运行`gulp bower`, 会直接打开firefox显示结果
++ 运行`gulp serve`, 会直接打开firefox显示结果
 
 ![屏幕快照 2017-03-27 下午2.37.58.png](http://upload-images.jianshu.io/upload_images/4623363-dbc0601a14bb70b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
