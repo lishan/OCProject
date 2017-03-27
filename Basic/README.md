@@ -25,9 +25,7 @@ s.js, angular-resource.js, angular-messages.js, angular-route.js, angular-saniti
 npm install generator-karma --save-dev
 ```
 > Tips: 加上`--save-dev`参数不仅会在本地安装需要的包，而且会把依赖添加到package.json中，供别人同步代码的时候使用。生成代码如下:
-```
-"generator-karma": "^2.0.0",
-```
+> `"generator-karma": "^2.0.0",`
 
 ## 安装项目需要的依赖的node_modules和bower_components
 
@@ -76,31 +74,31 @@ gulp.task('start:client', ['start:server', 'styles'], function () {
 
 + 打开gulpfile.js配置文件可以看到，这里的bower任务是发现所有bower依赖（包括css和js），运行`gulp bower`将其注入到index.html中。
 
-  +  css 注入示例，运行之后会在中间加入css依赖
++ css 注入示例，运行之后会在中间加入css依赖
 ```
-<!-- build:css(.) styles/vendor.css -->
-<!-- bower:css -->
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-<!-- endbower -->
-<!-- endbuild -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
 ```
-  + js 注入
++ js 注入
 ```
-<!-- build:js(.) scripts/vendor.js -->
-<!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-aria/angular-aria.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-messages/angular-messages.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-touch/angular-touch.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 ```
 
 + 但是在默认的yeoman生成的代码中，bower任务如下，这地方有两个问题
@@ -115,8 +113,9 @@ gulp.task('bower', function () {
   .pipe(gulp.dest(yeoman.app + '/views'));
 });
 ```
-  + 可以发现directory变量指向的app/bower_components，但是bower默认安装在根目录下，需要修改这个路径
-  + 生成的gulp.dest pipeline是把index.html放到app/views，但是启动的时候寻找app的index.html
+
+  1. 可以发现directory变量指向的app/bower_components，但是bower默认安装在根目录下，需要修改这个路径
+  2. 生成的gulp.dest pipeline是把index.html放到app/views，但是启动的时候寻找app的index.html
 
 + 为了解决上面两个问题，首先需要修改.bowerrc文件，指定其生成目录的位置
 ```
