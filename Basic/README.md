@@ -1,6 +1,7 @@
 > 需要系统中安装了git, node, bower工具，本文的运行版本是
 > `node -v` v6.9.1
 > `bower -v` 1.8.0
+> `gulp -v` CLI version 1.2.2
 
 [示例代码的Github地址](https://github.com/lishan/OCProject/tree/master/Basic)
 [简书地址](http://www.jianshu.com/p/cb5b76c3aa36)
@@ -35,6 +36,8 @@ bower install
 ```
 
 ## 运行gulp任务
+
+> Gulp是一个前端开发工具，通过gulp可以方便的配置build, test, 依赖注入等等的工作，只需要执行类似`gulp test`这样一个命令。
 
 + 由于gulp本身被包含在项目的依赖中，可以在node_modules下面找到
 
@@ -153,7 +156,53 @@ gulp.task('bower', function () {
 
 + 运行`gulp serve`, 会直接打开firefox显示结果
 
-![屏幕快照 2017-03-27 下午2.37.58.png](http://upload-images.jianshu.io/upload_images/4623363-dbc0601a14bb70b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![屏幕快照 2017-03-4427 下午2.37.58.png](http://upload-images.jianshu.io/upload_images/4623363-dbc0601a14bb70b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## Gulp load plugins
+
+这是一个非常有用的语法糖，可以帮助用户方便的访问已经安装的gulp插件。
+
+```js
+var $ = require('gulp-load-plugins')();
+$.jshint;//gulp-jshint
+$.sass;  //gulp-sass
+```
+
+## Gulp nodemon
+
+Nodemon在开发过程中相当有用，它会自动监测nodejs源代码，然后重新启动。
+以下是一个例子，注意callback函数的作用。
+> Tips:很多时候，我们说一个gulp任务A依赖于另外一个gulp任务B，其实是在A的callback函数返回的时候，表明A任务已经完成，之后才会去调用B任务。
+> 所以在定义一些有依赖的gulp任务函数的时候，需要注意callback函数的写法。
+```js
+gulp.task('start:server', [],(callback) => {
+  let started = false;
+  return $.nodemon({// $.nodemon是gulp load plugin的写法
+    script: 'build-server/app.js',
+    ignore: ["app","dist","upload","node","node-v6.9.1","build-server"]
+  }).on('start', function () {
+    if (!started) { //为了防止执行多次
+      callback();
+      started = true;
+    }
+  });
+});
+```
+
+## Gulp watch and livereload
+
+与nodemon的后端监测相对的，前端监测使用watch和livereload配合。watch用来监测文件，当文件有改动的时候，livereload可以动态的加载到服务器上，
+需要注意的是，livereload是一个服务进程，可以加载包括html,前端js,css等等文件。
+
+```js
+gulp.task('watch', function () {
+  $.livereload.listen();
+
+  $.watch(paths.views.files)
+    .pipe($.plumber())
+    .pipe($.livereload());
+  });
+```
 
 ## 小结
 
