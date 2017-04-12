@@ -157,7 +157,7 @@ gulp.task('bower', function () {
 
 ## 小结
 
-+  yeoman的generator可以方便的帮助我们快速的建立一个骨架工程，例如generator-angular-fullstack，可以生成一个全栈的工程，包括express server，提供mongodb依赖
++ yeoman的generator可以方便的帮助我们快速的建立一个骨架工程，例如generator-angular-fullstack，可以生成一个全栈的工程，包括express server，提供mongodb依赖
 + gulp是一个非常强大的项目管理工具，可以完成build, test, 注入，打包，等等功能
 + wiredep是一个非常实用的工具，可以方便的注入bower的依赖
 
