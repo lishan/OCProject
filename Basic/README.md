@@ -204,6 +204,18 @@ gulp.task('watch', function () {
   });
 ```
 
+## 使用ES6
+
+gulp本身的gulpfile.js可以支持ES6, 例如上面代码中使用到的let定义变量，匿名函数等等功能。需要更名为gulpfile.babel.js，可以看到这里还是采用babel解释器的方式来使用es6。
+对于别的js代码，如果想使用es6的时候，可以使用gulp babel的转码器，转成es2015的格式，在浏览器上运行。下面的一个流说明了这个问题。
+```js
+let es6ClientScript = lazypipe()
+  .pipe($.babel, {
+    presets: ['es2015']
+  })
+  .pipe(gulp.dest, paths.buildScriptsDest);
+```
+
 ## 小结
 
 + yeoman的generator可以方便的帮助我们快速的建立一个骨架工程，例如generator-angular-fullstack，可以生成一个全栈的工程，包括express server，提供mongodb依赖
