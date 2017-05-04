@@ -1,13 +1,9 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name basicApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the basicApp
+ * Main Controller
  */
-angular.module('basicApp')
+angular.module('basic')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
