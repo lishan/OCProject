@@ -1,0 +1,64 @@
+<!doctype html>
+<html ng-app="testFramework">
+<head>
+  <meta charset="utf-8">
+  <title>橘云多租户管控平台</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-sidebar/dist/css/sidebar.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css" />
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(app) styles/main.css -->
+  <!-- endbuild -->
+</head>
+<body ng-controller="ConsoleCtrl">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div ng-repeat="item in awesomeThings">
+  {{item}}
+</div>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/angular-touch/angular-touch.min.js"></script>
+<script src="bower_components/bootstrap-sidebar/dist/js/sidebar.js"></script>
+<script src="bower_components/angular-translate/angular-translate.min.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+<script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
+<script src="bower_components/spin.js/spin.min.js"></script>
+<script src="bower_components/angular-spinner/angular-spinner.min.js"></script>
+<script src="bower_components/angular-ui-select/dist/select.min.js"></script>
+<script src="bower_components/angular-toggle-switch/angular-toggle-switch.min.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js(app) scripts/scripts.js -->
+<!-- 3rd party packages should lay before scripts in projects-->
+<script src="scripts/src.js"></script>
+<!-- endbuild -->
+</body>
+</html>
