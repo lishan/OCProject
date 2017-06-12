@@ -37,8 +37,8 @@ module.exports = function(config) {
       'app/bower_components/angular-spinner/angular-spinner.js',
       'app/bower_components/angular-ui-select/dist/select.js',
       'app/bower_components/angular-toggle-switch/angular-toggle-switch.js',
-      'app/scripts/**/*.js',
-      'test/spec/**/*.js'
+      'app/build-scripts/**/*.js',
+      'build-tests/spec/**/*.js'
     ],
 
 
@@ -78,7 +78,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'PhantomJS'],
 
 
     // Continuous Integration mode
@@ -89,4 +89,4 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};

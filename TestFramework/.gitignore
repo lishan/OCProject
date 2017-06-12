@@ -16,4 +16,4 @@ log/
 *.log
 users.dat
 .tmp/
-OCManagerWeb.war
+/build-tests
