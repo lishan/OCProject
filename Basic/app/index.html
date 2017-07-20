@@ -17,13 +17,10 @@
   <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
   <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.css" />
   <link rel="stylesheet" href="bower_components/bootstrap-tokenfield/dist/css/bootstrap-tokenfield.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-application-wizard/dist/bootstrap-wizard.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(app) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="bower_components/mermaid/dist/mermaid.dark.css"/>
-  <link rel="stylesheet" href="bower_components/jquery-ui/themes/ui-lightness/jquery-ui.css"/>
   <!-- endbuild -->
 </head>
 <body ng-app="basic">
@@ -98,7 +95,7 @@
   <!--</ul>-->
   <!--</div>-->
   <div class="col-lg-10 col-lg-offset-1">
-    <div ng-view=""></div>
+    <ui-view></ui-view>
   </div>
 </div>
 
@@ -121,7 +118,6 @@
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-messages/angular-messages.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/bootstrap-sidebar/dist/js/sidebar.js"></script>
@@ -139,16 +135,15 @@
 <script src="bower_components/moment/moment.js"></script>
 <script src="bower_components/angular-moment/angular-moment.js"></script>
 <script src="bower_components/bootstrap-tokenfield/dist/bootstrap-tokenfield.js"></script>
-<script src="bower_components/bootstrap-application-wizard/dist/bootstrap-wizard.js"></script>
 <script src="bower_components/chart.js/dist/Chart.js"></script>
 <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js(app) scripts/scripts.js -->
 <!-- 3rd party packages should lay before scripts in projects-->
 <script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
-<script src="bower_components/mermaid/dist/mermaid.js"></script>
 <script src="build-scripts/app.js"></script>
 <script src="build-scripts/directive/tokenfield.js"></script>
 <script src="build-scripts/controllers/main.js"></script>

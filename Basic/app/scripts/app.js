@@ -15,7 +15,7 @@ angular
     'ngCookies',
     'ngMessages',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngTouch',
     'pascalprecht.translate',
@@ -33,33 +33,32 @@ angular
     'angularMoment',
     'chart.js'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("home");
+    $stateProvider
+      .state('home', {
+        url:"/",
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/dashboard', {
+      .state('dashboard', {
+        url:"/dashboard",
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
       })
-      .when('/dataModel', {
+      .state('dataModel', {
+        url:"/dataModel",
         templateUrl: 'views/dataModel.html',
         controller: 'DataModelCtrl'
       })
-      .when('/operation', {
+      .state('operation', {
+        url:"/operation",
         templateUrl: 'views/operation.html',
         controller: 'OperationCtrl'
       })
-      .when('/library', {
-        templateUrl: 'views/library.html',
-        controller: 'LibraryCtrl'
-      })
-      .when('/setting', {
+      .state('setting', {
+        url:"/setting",
         templateUrl: 'views/main.html',
         controller: 'SettingCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   });
