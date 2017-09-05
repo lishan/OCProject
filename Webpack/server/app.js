@@ -1,21 +1,24 @@
-//app.js
-"use strict";
 import express from 'express';
 import bodyParser from 'body-parser';
-import config from './config';
 import path from 'path';
-import favicon from 'serve-favicon';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpack from 'webpack';
+import process from 'process';
 
 let app = express();
-let env = config.env || 'dev';
+let env = process.env.NODE_ENV || 'dev';
+let port = process.env.NODE_PORT || 9000;
+let webpackConfig;
 
-if(env === 'dev') {
-  app.use(require('connect-livereload')());
-  app.use("/fonts",express.static("app/bower_components/bootstrap/fonts"));
+if(env === 'dev'){
+  webpackConfig = require('../webpack/webpack.dev.babel.js');
+}else if(env === 'prod'){
+  webpackConfig = require('../webpack/webpack.prod.babel.js');
 }
 
-app.use(express.static(config[env].dist));
-app.use(favicon(path.join(__dirname, '../', config[env].dist, '/favicon.ico')));
+app.use(webpackDevMiddleware(webpack(webpackConfig), {
+  publicPath: webpackConfig.output.publicPath
+}));
 
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -23,11 +26,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../',config[env].dist,'/404.html'));// load the single view file (angular will handle the page changes on the front-end)
+  res.sendFile(path.resolve(__dirname, '..', 'app','404.html'));// load the single view file (angular will handle the page changes on the front-end)
 });
 
-app.listen(config[env].port, function () {
-  console.log('App listening on port ' + config[env].port + "!");
+app.listen(port, function () {
+  console.log('App listening on port ' + port + "!");
 });
 
 module.exports = app;

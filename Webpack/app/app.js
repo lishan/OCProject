@@ -13,7 +13,7 @@ import uirouter from 'angular-ui-router';
 import 'jquery';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import './styles/main.css';
+import './sass/main.scss';
 import main from './views/main.html';
 
 let app = angular.module('basic', [
@@ -22,11 +22,11 @@ let app = angular.module('basic', [
 
 require('./scripts/main.js');
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("home");
     $stateProvider.state('home', {
         url:"/home",
         template: main,
         controller: 'MainCtrl'
       })
-  });
+  }]);
